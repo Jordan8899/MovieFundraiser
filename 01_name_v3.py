@@ -1,4 +1,4 @@
-def check_input(question):
+def string_input(question):
     while True:
         try:
             response = str(input(question))
@@ -12,4 +12,4 @@ def check_input(question):
             print("Error\n")
 
 
-name = check_input("What's your name? ")
+name = string_input("What's your name? ")
