@@ -1,3 +1,4 @@
+# String value checker function, same as v2 except this code can be recalled
 def string_input(question):
     while True:
         try:
@@ -12,4 +13,5 @@ def string_input(question):
             print("Error\n")
 
 
+# Name variable calling the function
 name = string_input("What's your name? ")
