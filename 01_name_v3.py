@@ -2,7 +2,7 @@
 def string_input(question):
     while True:
         try:
-            response = str(input(question))
+            response = str(input(question)).strip()
 
             if response.isalpha():
                 return response
