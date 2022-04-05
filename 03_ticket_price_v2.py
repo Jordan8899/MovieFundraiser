@@ -34,4 +34,4 @@ elif age in range(16, 64):
 elif age in range(65, 130):
     ticket_price = 6.5
 
-print(ticket_price)
+print("Ticket Price is ${:.2f}".format(ticket_price))
