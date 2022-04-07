@@ -1,0 +1,19 @@
+cost = 0
+snack = input("What snack do you want? ")
+
+if snack == "popcorn":
+    cost += 2.5
+
+elif snack == "m&m":
+    cost += 3
+
+elif snack == "pita chips":
+    cost += 4.5
+
+elif snack == "oj":
+    cost += 3.25
+    
+elif snack == "water":
+    cost += 2
+
+print("You will get {} and the price is ${}".format(snack, cost))
