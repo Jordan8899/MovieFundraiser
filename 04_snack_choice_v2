@@ -1,0 +1,37 @@
+snack_list = ["popcorn", "m&m", "pitachips", "oj", "water"]
+cost = 0
+snack = ""
+
+def string_input(question):
+    while True:
+        try:
+            response = str(input(question)).strip()
+
+            if response.isalpha():
+                return response
+            else:
+                print("Please input only letters\n")
+
+        except ValueError:
+            print("Error\n")
+
+
+while snack not in snack_list:
+    snack = string_input("What snack do you want? ")
+
+    if snack == "popcorn":
+        cost += 2.5
+    
+    elif snack == "m&m":
+        cost += 3
+    
+    elif snack == "pita chips":
+        cost += 4.5
+    
+    elif snack == "oj":
+        cost += 3.25
+        
+    elif snack == "water":
+        cost += 2
+
+print("You will get {} and the price is ${}".format(snack, cost))
