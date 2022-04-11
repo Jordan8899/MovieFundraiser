@@ -1,4 +1,5 @@
 snack_list = ["Popcorn", "M&M", "Pita Chips", "Orange Juice", "Water", "OJ"]
+users_snacks = []
 cost = 0
 snack = ""
 
@@ -14,37 +15,39 @@ def string_input(question):
         except ValueError:
             print("Error\n")
 
+def int_input(question):
+    while True:
+        try:
+            response = int(input(question))
 
-def snack_amount(a):
-    if response[0].isnumeric():
-        return response
-    else:
-        print("Error")
+            if response > 0:
+                return response
 
+        # Error message if user inputs incorrect characters
+        except ValueError:
+            print("Error, please only input numbers\n")
 
 while snack != "exit":
-    snack = input("What snack do you want? ")
-    snack_amount(snack)
-    amount = snack[0]
-    snack.replace(int, "")
+    snack = string_input("What snack do you want? ")
+    amount = int_input("How many of {} do you want? ".format(snack))
+    snack_check = snack.lower().replace(" ", "")
 
-    snack_check = snack.replace(" ", "").lower()
-    
     if snack_check == "popcorn":
         cost += 2.5
-    
+
     elif snack_check == "m&m":
         cost += 3
-    
+
     elif snack_check == "pitachips":
         cost += 4.5
-    
+
     elif snack_check == "oj" or snack_check == "orangejuice":
         cost += 3.25
-        
+
     elif snack_check == "water":
         cost += 2
     else:
         print("Please input valid snack or type 'exit' to continue")
 
 print("You will get {} and the price is ${}".format(snack, cost))
+
