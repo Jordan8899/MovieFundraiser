@@ -1,3 +1,6 @@
+ticket_price = 0
+
+
 # Number checker function that can be called infinite times
 def number_input(question):
     while True:
@@ -26,12 +29,12 @@ age = number_input("What's your age? ")
 
 # Ticket Price
 if age in range(12, 15):
-    ticket_price = 7.5
+    ticket_price += 7.5
 
 elif age in range(16, 64):
-    ticket_price = 10.5
+    ticket_price += 10.5
 
 elif age in range(65, 130):
-    ticket_price = 6.5
+    ticket_price += 6.5
 
 print("Ticket Price is ${:.2f}".format(ticket_price))
