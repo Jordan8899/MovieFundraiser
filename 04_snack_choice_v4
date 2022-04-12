@@ -1,19 +1,27 @@
 snack_list = ["Popcorn", "M&M", "Pita Chips", "Orange Juice", "Water", "OJ"]
-users_snacks = []
+users_snacks_name = []
+users_snacks_amount = []
 cost = 0
 snack = ""
+amount = 0
 
 
 def string_input(question):
     while True:
         try:
-            response = input(question).strip()
+            response = str(input(question)).strip()
 
             if response.isalpha():
                 return response
 
+            elif response == "m&m" or response == "M&M":
+                return response
+
+            else:
+                print("Please input a valid response, this response can only contain letters")
         except ValueError:
             print("Error\n")
+
 
 def int_input(question):
     while True:
@@ -27,27 +35,43 @@ def int_input(question):
         except ValueError:
             print("Error, please only input numbers\n")
 
+
 while snack != "exit":
     snack = string_input("What snack do you want? ")
-    amount = int_input("How many of {} do you want? ".format(snack))
+
+    if snack != "exit":
+        amount = int_input("How much {} do you want? ".format(snack))
+
     snack_check = snack.lower().replace(" ", "")
 
     if snack_check == "popcorn":
-        cost += 2.5
+        cost += 2.5 * amount
+        users_snacks_name.append("Popcorn")
 
     elif snack_check == "m&m":
-        cost += 3
+        cost += 3 * amount
+        users_snacks_name.append("M&M")
 
     elif snack_check == "pitachips":
-        cost += 4.5
+        cost += 4.5 * amount
+        users_snacks_name.append("Pita Chips")
 
     elif snack_check == "oj" or snack_check == "orangejuice":
-        cost += 3.25
+        cost += 3.25 * amount
+        users_snacks_name.append("Orange Juice")
 
     elif snack_check == "water":
-        cost += 2
+        cost += 2 * amount
+        users_snacks_name.append("Water")
+
     else:
         print("Please input valid snack or type 'exit' to continue")
 
-print("You will get {} and the price is ${}".format(snack, cost))
+    users_snacks_amount.append(amount)
 
+len_user_snack_name = len(users_snacks_name)
+
+for i in range(len_user_snack_name):
+    print("You will get {} {}".format(users_snacks_amount[i], users_snacks_name[i]))
+
+print("The total cost is ${}".format(cost))
