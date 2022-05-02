@@ -127,9 +127,9 @@ payment_method = string_input("How would you like to pay? ")
 
 if payment_method == pay1:
     surcharge = total_cost * 1.05
+    total_cost = surcharge
 
 # Total Cost
-total_cost = surcharge
 print("Your total cost is: ${:.2f}".format(total_cost))
 
 # Profit
