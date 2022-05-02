@@ -136,4 +136,5 @@ if payment_method in pay1:
 print("Your total cost is: ${:.2f}".format(total_cost))
 
 # Profit
-profit = ticket_price + cost
+snack_profit = 0.2 * cost
+profit = ticket_price + snack_profit
