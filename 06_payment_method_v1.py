@@ -1,5 +1,5 @@
-pay1 = "credit"
-pay2 = "cash"
+pay1 = ["credit", "card"]
+pay2 = ["cash", "money"]
 ticket_price = 0
 snack_list = ["Popcorn", "M&M", "Pita Chips", "Orange Juice", "Water", "OJ"]
 users_snacks_name = []
@@ -108,6 +108,9 @@ while snack != "exit":
         cost += 2 * amount
         users_snacks_name.append("Water")
 
+    elif snack_check == "exit":
+        break
+
     else:
         print("Please input valid snack or type 'exit' to continue")
 
@@ -125,7 +128,7 @@ total_cost = ticket_price + cost
 
 payment_method = string_input("How would you like to pay? ")
 
-if payment_method == pay1:
+if payment_method in pay1:
     surcharge = total_cost * 1.05
     total_cost = surcharge
 
