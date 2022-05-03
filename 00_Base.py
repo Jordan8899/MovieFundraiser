@@ -136,7 +136,7 @@ for i in range(len_user_snack_name):
 # Payment method, card or credit + total cost calculation
 total_cost = ticket_price + cost
 
-payment_method = string_input("How would you like to pay? ")
+payment_method = string_input("How would you like to pay (Cash or Card)? ")
 
 if payment_method in pay1:
     surcharge = total_cost * 1.05
