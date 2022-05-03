@@ -9,6 +9,7 @@ cost = 0
 snack = ""
 amount = 0
 
+
 # Functions
 
 
@@ -69,6 +70,17 @@ def number_input(question):
 
 # Main Routine
 
+# Privacy info
+print("This program will lead you through buying tickets and snacks. \n"
+      "We will only store your private information for this fundraiser  \n"
+      "We will not share your private information.\n"
+      "Please enter all following questions and thank you for helping us raise money \n")
+
+# Ticket Details
+print("For ages 12 - 15 tickets will cost $7.50\n"
+      "For ages 16 - 64 tickets will cost $10.50\n"
+      "For ages 64+ tickets will cost $6.50\n")
+
 # Name variable calling the function
 name = string_input("What's your name? ")
 
@@ -87,7 +99,16 @@ elif age in range(65, 130):
 
 print("Ticket Price is ${:.2f}".format(ticket_price))
 
-# Snack while loop only exits when user inputs exit
+# Snack while loop only exits when user inputs exit + snack details / information
+print("The snacks we have for offer are: \n"
+      "Popcorn \n"
+      "M&M \n"
+      "Pita Chips \n"
+      "Orange Juice \n"
+      "Water \n"
+      "To buy snacks please enter the snacks name \n"
+      "Then enter the quantity of snacks you want\n"
+      "To stop buying snacks please enter 'exit'\n")
 while snack != "exit":
     snack = string_input("What snack do you want? ")
 
