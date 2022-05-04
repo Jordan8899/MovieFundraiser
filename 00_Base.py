@@ -8,10 +8,16 @@ users_snacks_amount = []
 cost = 0
 snack = ""
 amount = 0
-
+count = 0
+max_tickets = 150
+names = []
+ages = []
+ticket_child = 0
+ticket_adult = 0
+ticket_senior = 0
+exit = False
 
 # Functions
-
 
 # String checker including M&M used for name, snack, pay
 def string_input(question):
@@ -67,7 +73,6 @@ def number_input(question):
         except ValueError:
             print("Please only input numbers\n")
 
-
 # Main Routine
 
 # Privacy info
@@ -76,76 +81,89 @@ print("This program will lead you through buying tickets and snacks. \n"
       "We will not share your private information.\n"
       "Please enter all following questions and thank you for helping us raise money \n")
 
-# Ticket Details
-print("For ages 12 - 15 tickets will cost $7.50\n"
-      "For ages 16 - 64 tickets will cost $10.50\n"
-      "For ages 64+ tickets will cost $6.50\n")
+while not exit and count <= 150:
+    # Ticket Details
+    print("For ages 12 - 15 tickets will cost $7.50\n"
+          "For ages 16 - 64 tickets will cost $10.50\n"
+          "For ages 64+ tickets will cost $6.50\n")
 
-# Name variable calling the function
-name = string_input("What's your name? ")
+    # Name variable calling the function
+    name = string_input("What's your name? ")
+    names.append(name)
 
-# Age variable using number_input function
-age = number_input("What's your age? ")
+    # Count
+    count += 1
 
-# Ticket Price
-if age in range(12, 15):
-    ticket_price += 7.5
+    # Age variable using number_input function
+    age = number_input("What's your age? ")
+    ages.append(age)
 
-elif age in range(16, 64):
-    ticket_price += 10.5
+    # Ticket Price
+    if age in range(12, 15):
+        ticket_price += 7.5
+        ticket_child += 1
 
-elif age in range(65, 130):
-    ticket_price += 6.5
+    elif age in range(16, 64):
+        ticket_price += 10.5
+        ticket_adult += 1
 
-print("Ticket Price is ${:.2f}".format(ticket_price))
+    elif age in range(65, 130):
+        ticket_price += 6.5
+        ticket_senior += 1
 
-# Snack while loop only exits when user inputs exit + snack details / information
-print("The snacks we have for offer are: \n"
-      "Popcorn \n"
-      "M&M \n"
-      "Pita Chips \n"
-      "Orange Juice \n"
-      "Water \n"
-      "To buy snacks please enter the snacks name \n"
-      "Then enter the quantity of snacks you want\n"
-      "To stop buying snacks please enter 'exit'\n")
-while snack != "exit":
-    snack = string_input("What snack do you want? ")
+    print("Ticket Price is ${:.2f}".format(ticket_price))
 
-    # Exit code statement
-    if snack != "exit":
-        amount = int_input("How much {} do you want? ".format(snack))
+    # Snack while loop only exits when user inputs exit + snack details / information
+    print("The snacks we have for offer are: \n"
+          "Popcorn \n"
+          "M&M \n"
+          "Pita Chips \n"
+          "Orange Juice \n"
+          "Water \n"
+          "To buy snacks please enter the snacks name \n"
+          "Then enter the quantity of snacks you want\n"
+          "To stop buying snacks please enter 'exit'\n")
+    while snack != "exit":
+        snack = string_input("What snack do you want? ")
 
-    # Sets users input
-    snack_check = snack.lower().replace(" ", "")
+        # Exit code statement
+        if snack != "exit":
+            amount = int_input("How much {} do you want? ".format(snack))
 
-    if snack_check == "popcorn":
-        cost += 2.5 * amount
-        users_snacks_name.append("Popcorn")
+        # Sets users input
+        snack_check = snack.lower().replace(" ", "")
 
-    elif snack_check == "m&m":
-        cost += 3 * amount
-        users_snacks_name.append("M&M")
+        if snack_check == "popcorn":
+            cost += 2.5 * amount
+            users_snacks_name.append("Popcorn")
 
-    elif snack_check == "pitachips":
-        cost += 4.5 * amount
-        users_snacks_name.append("Pita Chips")
+        elif snack_check == "m&m":
+            cost += 3 * amount
+            users_snacks_name.append("M&M")
 
-    elif snack_check == "oj" or snack_check == "orangejuice":
-        cost += 3.25 * amount
-        users_snacks_name.append("Orange Juice")
+        elif snack_check == "pitachips":
+            cost += 4.5 * amount
+            users_snacks_name.append("Pita Chips")
 
-    elif snack_check == "water":
-        cost += 2 * amount
-        users_snacks_name.append("Water")
+        elif snack_check == "oj" or snack_check == "orangejuice":
+            cost += 3.25 * amount
+            users_snacks_name.append("Orange Juice")
 
-    elif snack_check == "exit":
-        break
+        elif snack_check == "water":
+            cost += 2 * amount
+            users_snacks_name.append("Water")
 
-    else:
-        print("Please input valid snack or type 'exit' to continue")
+        elif snack_check == "exit":
+            break
 
-    users_snacks_amount.append(amount)
+        else:
+            print("Please input valid snack or type 'exit' to continue")
+
+        users_snacks_amount.append(amount)
+
+    exit_chance = string_input("Would you like to buy another ticket? \n")
+    if exit_chance == "no":
+        exit = True
 
 # Finds amount of snacks user has inputted
 len_user_snack_name = len(users_snacks_name)
