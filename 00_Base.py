@@ -81,7 +81,7 @@ print("This program will lead you through buying tickets and snacks. \n"
       "We will not share your private information.\n"
       "Please enter all following questions and thank you for helping us raise money \n")
 
-while not exit and count <= 150:
+while not exit and count <= max_tickets:
     # Ticket Details
     print("For ages 12 - 15 tickets will cost $7.50\n"
           "For ages 16 - 64 tickets will cost $10.50\n"
@@ -115,16 +115,15 @@ while not exit and count <= 150:
 
     # Snack while loop only exits when user inputs exit + snack details / information
     print("The snacks we have for offer are: \n"
-          "Popcorn \n"
+          "\nPopcorn \n"
           "M&M \n"
           "Pita Chips \n"
           "Orange Juice \n"
           "Water \n"
-          "To buy snacks please enter the snacks name \n"
-          "Then enter the quantity of snacks you want\n"
-          "To stop buying snacks please enter 'exit'\n")
+          "\nTo buy snacks please enter the snacks name \n"
+          "Then enter the quantity of snacks you want\n")
 
-    while snack != "exit":
+    while True:
         snack = string_input("What snack do you want? ")
 
         # Exit code statement
@@ -165,7 +164,11 @@ while not exit and count <= 150:
         else:
             print("Please input valid snack or type 'exit' to continue")
 
-    exit_chance = string_input("Would you like to buy another ticket? \n")
+        snack_yes_no = string_input("Would you like to buy another snack? ")
+        if snack_yes_no == "no" or snack_yes_no == "nah":
+            break
+
+    exit_chance = string_input("Would you like to buy another ticket? ").replace(" ", "").lower()
     if exit_chance == "no":
         exit = True
 
