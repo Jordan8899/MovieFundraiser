@@ -123,6 +123,7 @@ while not exit and count <= 150:
           "To buy snacks please enter the snacks name \n"
           "Then enter the quantity of snacks you want\n"
           "To stop buying snacks please enter 'exit'\n")
+
     while snack != "exit":
         snack = string_input("What snack do you want? ")
 
@@ -130,36 +131,39 @@ while not exit and count <= 150:
         if snack != "exit":
             amount = int_input("How much {} do you want? ".format(snack))
 
-        # Sets users input
+        # Sets users input to remove spaces and lower cases
         snack_check = snack.lower().replace(" ", "")
 
         if snack_check == "popcorn":
             cost += 2.5 * amount
             users_snacks_name.append("Popcorn")
+            users_snacks_amount.append(amount)
 
-        elif snack_check == "m&m":
+        elif snack_check == "m&m" or snack_check == "mandm":
             cost += 3 * amount
             users_snacks_name.append("M&M")
+            users_snacks_amount.append(amount)
 
         elif snack_check == "pitachips":
             cost += 4.5 * amount
             users_snacks_name.append("Pita Chips")
+            users_snacks_amount.append(amount)
 
         elif snack_check == "oj" or snack_check == "orangejuice":
             cost += 3.25 * amount
             users_snacks_name.append("Orange Juice")
+            users_snacks_amount.append(amount)
 
         elif snack_check == "water":
             cost += 2 * amount
             users_snacks_name.append("Water")
+            users_snacks_amount.append(amount)
 
         elif snack_check == "exit":
             break
 
         else:
             print("Please input valid snack or type 'exit' to continue")
-
-        users_snacks_amount.append(amount)
 
     exit_chance = string_input("Would you like to buy another ticket? \n")
     if exit_chance == "no":
@@ -175,11 +179,15 @@ for i in range(len_user_snack_name):
 # Payment method, card or credit + total cost calculation
 total_cost = ticket_price + cost
 
-payment_method = string_input("How would you like to pay (Cash or Card)? ")
-
-if payment_method in pay1:
-    surcharge = total_cost * 1.05
-    total_cost = surcharge
+while True:
+    payment_method = string_input("How would you like to pay (Cash or Card)? ")
+    if payment_method in pay1:
+        surcharge = total_cost * 1.05
+        total_cost = surcharge
+    elif payment_method in pay2:
+        break
+    else:
+        print("Please input 'cash' or 'card'")
 
 # Total Cost
 print("Your total cost is: ${:.2f}".format(total_cost))
