@@ -2,7 +2,6 @@
 pay1 = ["credit", "card"]
 pay2 = ["cash", "money"]
 ticket_price = 0
-snack_list = ["Popcorn", "M&M", "Pita Chips", "Orange Juice", "Water", "OJ"]
 users_snacks_name = []
 users_snacks_amount = []
 cost = 0
