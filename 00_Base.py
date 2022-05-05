@@ -122,12 +122,13 @@ while not exit and count <= max_tickets:
           "\nTo buy snacks please enter the snacks name \n"
           "Then enter the quantity of snacks you want\n")
 
-    while True:
-        snack = string_input("What snack do you want? ")
+    snack_loop = string_input("Would you like to buy snacks? ")
+    if snack_loop == "no" or snack_loop == "nah":
+        snack_loop = False
 
-        # Exit code statement
-        if snack != "exit":
-            amount = int_input("How much {} do you want? ".format(snack))
+    while snack_loop:
+        snack = string_input("\nWhat snack do you want? ")
+        amount = int_input("How much {} do you want? ".format(snack))
 
         # Sets users input to remove spaces and lower cases
         snack_check = snack.lower().replace(" ", "")
@@ -186,6 +187,7 @@ while True:
     if payment_method in pay1:
         surcharge = total_cost * 1.05
         total_cost = surcharge
+        break
     elif payment_method in pay2:
         break
     else:
