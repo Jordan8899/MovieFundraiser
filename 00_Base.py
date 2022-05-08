@@ -15,6 +15,8 @@ ticket_child = 0
 ticket_adult = 0
 ticket_senior = 0
 exit = False
+no_words = ["no", "nah", "negative", "incorrect"]
+yes_words = ["yes", "yea", "ya", "positive", "sure", "correct"]
 
 # Functions
 
@@ -122,9 +124,16 @@ while not exit and count <= max_tickets:
           "\nTo buy snacks please enter the snacks name \n"
           "Then enter the quantity of snacks you want\n")
 
-    snack_loop = string_input("Would you like to buy snacks? ")
-    if snack_loop == "no" or snack_loop == "nah":
-        snack_loop = False
+    while True:
+        snack_loop = string_input("Would you like to buy snacks? ")
+        if snack_loop in no_words:
+            snack_loop = False
+            break
+        elif snack_loop in yes_words:
+            snack_loop = True
+            break
+        else:
+            print("Please enter 'yes' or 'no'\n")
 
     while snack_loop:
         snack = string_input("\nWhat snack do you want? ")
@@ -165,11 +174,11 @@ while not exit and count <= max_tickets:
             print("Please input valid snack or type 'exit' to continue")
 
         snack_yes_no = string_input("Would you like to buy another snack? ")
-        if snack_yes_no == "no" or snack_yes_no == "nah":
+        if snack_yes_no in no_words:
             break
 
     exit_chance = string_input("Would you like to buy another ticket? ").replace(" ", "").lower()
-    if exit_chance == "no":
+    if exit_chance in no_words:
         exit = True
 
 # Finds amount of snacks user has inputted
