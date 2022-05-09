@@ -15,7 +15,7 @@ ticket_child = 0
 ticket_adult = 0
 ticket_senior = 0
 exit = False
-no_words = ["no", "nah", "negative", "incorrect"]
+no_words = ["no", "nah", "negative", "incorrect", "exit"]
 yes_words = ["yes", "yea", "ya", "positive", "sure", "correct"]
 
 # Functions
