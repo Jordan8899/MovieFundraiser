@@ -1,19 +1,19 @@
 # Definitions
 pay1 = ["credit", "card"]
 pay2 = ["cash", "money"]
-ticket_price = 0
 users_snacks_name = []
 users_snacks_amount = []
+names = []
+ages = []
 cost = 0
-snack = ""
+ticket_price = 0
 amount = 0
 count = 0
 max_tickets = 150
-names = []
-ages = []
 ticket_child = 0
 ticket_adult = 0
 ticket_senior = 0
+snack = ""
 exit = False
 no_words = ["no", "nah", "negative", "incorrect", "exit"]
 yes_words = ["yes", "yea", "ya", "positive", "sure", "correct"]
