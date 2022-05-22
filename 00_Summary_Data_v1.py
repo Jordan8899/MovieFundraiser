@@ -2,66 +2,6 @@
 import pandas
 import re
 
-#  Snack Lists
-popcorn = []
-mms = []
-pita_chips = []
-water = []
-orange_juice = []
-snack_lists = [popcorn, mms, pita_chips, water, orange_juice]
-
-# User information Lists
-names = []
-ages = []
-
-# Ticket and surcharge lists
-total_tickets = []
-surcharge_multi_list = []
-
-# Set Definitions
-pay1 = ["credit", "card"]
-pay2 = ["cash", "money"]
-cost = 0
-ticket_price = 0
-ticket_count = 0
-MAX_TICKETS = 150
-exit = False
-no_words = ["no", "nah", "negative", "incorrect", "exit"]
-yes_words = ["yes", "yea", "ya", "positive", "sure", "correct"]
-ticket_sales = 0
-surcharge = 0
-
-# Summary Data
-summary_headings = ["Popcorn", "M&M's", "Pita Chips", "Water", "Orange Juice", "Snack Profit", "Ticket Profit", "Total Profit"]
-
-summary_data = []
-
-# Summary Dictionary
-movie_data_dictornary = {
-    "Name": names,
-    'Ticket': total_tickets,
-    "Popcorn": popcorn,
-    "Water": water,
-    "Pita Chips": pita_chips,
-    "M&Ms'": mms,
-    "Orange Juice": orange_juice,
-    "Surcharge": surcharge_multi_list
-}
-
-summary_data_dictornary = {
-    "Item": summary_headings,
-    "Amount": summary_data
-}
-
-# Price Dictionary
-price_dict = {
-    "Popcorn": 2.5,
-    "Water": 2,
-    "Pita Chips": 4.5,
-    "M&Ms'": 3,
-    "Orange Juice": 3.25
-}
-
 # Functions
 
 # String checker
@@ -164,10 +104,10 @@ def get_snack():
             return wanted_snack
 
         if re.match(number_regex, wanted_snack):
-            amounts = int(wanted_snack[0])
+            amount = int(wanted_snack[0])
             wanted_snack = wanted_snack[1:]
         else:
-            amounts = 1
+            amount = 1
             wanted_snack = wanted_snack
 
         wanted_snack.strip()
@@ -176,12 +116,13 @@ def get_snack():
 
         if snack_choice == "invalid":
             print("Please input a valid snack")
+            print()
 
-        if amounts >= 5:
+        if amount >= 5:
             print("Sorry we have a snack amounts limit of 4 per person")
             snack_choice = "invalid"
 
-        snack_row.append(amounts)
+        snack_row.append(amount)
         snack_row.append(snack_choice)
 
         if snack_choice != "exit" and snack_choice != "invalid":
@@ -190,6 +131,66 @@ def get_snack():
 # **************************************************************
 #                           Main Routine
 # **************************************************************
+
+#  Snack Lists
+popcorn = []
+mms = []
+pita_chips = []
+water = []
+orange_juice = []
+snack_lists = [popcorn, mms, pita_chips, water, orange_juice]
+
+# User information Lists
+names = []
+ages = []
+
+# Ticket and surcharge lists
+total_tickets = []
+surcharge_multi_list = []
+
+# Set Definitions
+pay1 = ["credit", "card"]
+pay2 = ["cash", "money"]
+cost = 0
+ticket_price = 0
+ticket_count = 0
+MAX_TICKETS = 150
+no_words = ["no", "nah", "negative", "incorrect", "exit"]
+yes_words = ["yes", "yea", "ya", "positive", "sure", "correct"]
+ticket_sales = 0
+surcharge = 0
+exit = False
+
+# Summary Data
+summary_headings = ["Popcorn", "M&M's", "Pita Chips", "Water", "Orange Juice", "Snack Profit", "Ticket Profit", "Total Profit"]
+
+summary_data = []
+
+# Summary Dictionary
+movie_data_dictornary = {
+    "Name": names,
+    'Ticket': total_tickets,
+    "Popcorn": popcorn,
+    "Water": water,
+    "Pita Chips": pita_chips,
+    "M&Ms'": mms,
+    "Orange Juice": orange_juice,
+    "Surcharge_Multiplier": surcharge_multi_list
+}
+
+summary_data_dictornary = {
+    "Item": summary_headings,
+    "Amount": summary_data
+}
+
+# Price Dictionary
+price_dict = {
+    "Popcorn": 2.5,
+    "Water": 2,
+    "Pita Chips": 4.5,
+    "M&Ms'": 3,
+    "Orange Juice": 3.25
+}
 
 # Privacy info
 print("This program will lead you through buying tickets and snacks. \n"
@@ -242,8 +243,14 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
           "\nenter 'exit' to stop buying snacks\n")
 
     # Allows snacks to be brought
-    snack_order = get_snack()
-
+    while True:
+        snack_yes_no = string_input("Would you like to buy snacks? ")
+        if snack_yes_no in yes_words:
+            snack_order = get_snack()
+        elif snack_yes_no in no_words:
+            break
+        else:
+            print("Please input yes or no")
     # Adds snack amount to list
     for item in snack_lists:
         item.append(0)
