@@ -110,7 +110,7 @@ def get_snack():
             amount = 1
             wanted_snack = wanted_snack
 
-        wanted_snack.strip()
+        wanted_snack = wanted_snack.replace(" ","")
 
         snack_choice = snack_input_checker(wanted_snack, valid_snacks)
 
@@ -251,9 +251,12 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
             break
         else:
             print("Please input yes or no")
+
     # Adds snack amount to list
     for item in snack_lists:
         item.append(0)
+
+    snack_order = snack_order.replace("exit", "")
 
     for item in snack_order:
         if len(item) > 0:
