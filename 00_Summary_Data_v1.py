@@ -247,6 +247,7 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
         snack_yes_no = string_input("Would you like to buy snacks? ")
         if snack_yes_no in yes_words:
             snack_order = get_snack()
+            snack_order = snack_order.replace("exit", "")
         elif snack_yes_no in no_words:
             break
         else:
@@ -255,8 +256,6 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
     # Adds snack amount to list
     for item in snack_lists:
         item.append(0)
-
-    snack_order = snack_order.replace("exit", "")
 
     for item in snack_order:
         if len(item) > 0:
