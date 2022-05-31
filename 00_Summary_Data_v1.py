@@ -110,7 +110,7 @@ def get_snack():
             amount = 1
             wanted_snack = wanted_snack
 
-        wanted_snack = wanted_snack.replace(" ","")
+        wanted_snack = wanted_snack.replace(" ", "")
 
         snack_choice = snack_input_checker(wanted_snack, valid_snacks)
 
