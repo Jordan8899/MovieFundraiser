@@ -127,6 +127,7 @@ def get_snack():
 
         if snack_choice != "exit" and snack_choice != "invalid":
             snack_list.append(snack_row)
+            return snack_list
 
 # **************************************************************
 #                           Main Routine
@@ -158,7 +159,6 @@ MAX_TICKETS = 150
 no_words = ["no", "nah", "negative", "incorrect", "exit"]
 yes_words = ["yes", "yea", "ya", "positive", "sure", "correct"]
 ticket_sales = 0
-surcharge = 0
 exit = False
 
 # Summary Data
@@ -247,7 +247,6 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
         snack_yes_no = string_input("Would you like to buy snacks? ")
         if snack_yes_no in yes_words:
             snack_order = get_snack()
-            snack_order = snack_order.replace("exit", "")
         elif snack_yes_no in no_words:
             break
         else:
@@ -277,7 +276,7 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
         else:
             print("Please input 'cash' or 'card'")
 
-        surcharge_multi_list.append(surcharge)
+    surcharge_multi_list.append(surcharge)
 
     # Allows user to buy more tickets if requested
     if MAX_TICKETS > 0:
