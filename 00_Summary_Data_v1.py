@@ -242,6 +242,10 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
           "enter a number within 2 - 4 as we have a snack limit of 4 of any one item per person"
           "\nenter 'exit' to stop buying snacks\n")
 
+    # Adds snack amount to list
+    for item in snack_lists:
+        item.append(0)
+
     # Allows snacks to be brought
     while True:
         snack_yes_no = string_input("Would you like to buy snacks? ")
@@ -252,16 +256,13 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
         else:
             print("Please input yes or no")
 
-    # Adds snack amount to list
-    for item in snack_lists:
-        item.append(0)
-
-    for item in snack_order:
-        if len(item) > 0:
-            to_find = (item[1])
-            amount = (item[0])
-            add_list = movie_data_dictornary[to_find]
-            add_list[-1] = amount
+    # Adds Snacks to list
+        for item in snack_order:
+            if len(item) > 0:
+                to_find = (item[1])
+                amount = (item[0])
+                add_list = movie_data_dictornary[to_find]
+                add_list[-1] = amount
 
     # Payment method, card or credit
     while True:
