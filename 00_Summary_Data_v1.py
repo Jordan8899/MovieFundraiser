@@ -73,6 +73,7 @@ def number_input(question):
         except ValueError:
             print("Please only input numbers\n")
 
+# Ticket amount checker
 def check_tickets(tickets_sold, tickets_limit):
     # This tells user how many seats are left
     if tickets_limit - tickets_sold == 1:
@@ -80,9 +81,12 @@ def check_tickets(tickets_sold, tickets_limit):
     else:
         print("There are {} seats left".format(tickets_limit - tickets_sold))
 
+# Snack Function to get users snacks
 def get_snack():
+    # Identifies numbers that can be put at start of order
     number_regex = "^[1-9]"
 
+    # Valid Snacks list for snacks that are valid to input
     valid_snacks = [
         ["popcorn", "p", "pop", "corn"],
         ["M&Ms", "m&m's", "mms", "mm", "m"],
@@ -91,6 +95,7 @@ def get_snack():
         ["orange juice", "oj", "o", "juice", "orange"]
     ]
 
+    # Users snack list
     snack_list = []
 
     wanted_snack = ""
@@ -192,7 +197,7 @@ price_dict = {
     "Orange Juice": 3.25
 }
 
-# Privacy info
+# Privacy info for user
 print("This program will lead you through buying tickets and snacks. \n"
       "We will only store your private information for this fundraiser  \n"
       "We will not share your private information.\n"
@@ -228,10 +233,10 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
 
     total_tickets.append(ticket_price)
     ticket_count += 1
-    ticket_sales += ticket_price
+    ticket_sales += ticket_price - 5
 
+    # Gives users their ticket price and snack options
     print("\nTicket Price is ${:.2f}\n".format(ticket_price))
-    # Snack while loop only exits when user inputs exit + snack details / information
     print("The snacks we have for offer are: \n"
           "\nPopcorn \n"
           "M&M \n"
@@ -242,11 +247,11 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
           "enter a number within 2 - 4 as we have a snack limit of 4 of any one item per person"
           "\nenter 'exit' to stop buying snacks\n")
 
-    # Adds snack amount to list
+    # Creates base for dictionary in case user doesn't buy everything
     for item in snack_lists:
         item.append(0)
 
-    # Allows snacks to be brought
+    # Snack while loop only exits when user inputs exit + snack details / information
     while True:
         snack_yes_no = string_input("Would you like to buy snacks? ")
         if snack_yes_no in yes_words:
@@ -256,7 +261,7 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
         else:
             print("Please input yes or no")
 
-    # Adds Snacks to list
+    # Adds Snacks to list for dictionary
         for item in snack_order:
             if len(item) > 0:
                 to_find = (item[1])
@@ -322,7 +327,7 @@ snack_total = movie_frame["Snacks"].sum()
 snack_profit = snack_total * 0.2
 
 # Ticket Profit
-ticket_profit = ticket_sales - (5 * ticket_sales)
+ticket_profit = ticket_sales
 
 # Total Profit
 total_profit = snack_profit + ticket_profit
