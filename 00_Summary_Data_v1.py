@@ -89,7 +89,7 @@ def get_snack():
     # Valid Snacks list for snacks that are valid to input
     valid_snacks = [
         ["popcorn", "p", "pop", "corn"],
-        ["M&Ms", "m&m's", "mms", "mm", "m"],
+        ["m&ms", "m&m's", "mms", "mm", "m", "m&m", "m&ms'"],
         ["pita chips", "chips", "pc", "pita"],
         ["water", "w"],
         ["orange juice", "oj", "o", "juice", "orange"]
@@ -178,7 +178,7 @@ movie_data_dictornary = {
     "Popcorn": popcorn,
     "Water": water,
     "Pita Chips": pita_chips,
-    "M&Ms'": mms,
+    "M&Ms": mms,
     "Orange Juice": orange_juice,
     "Surcharge_Multiplier": surcharge_multi_list
 }
@@ -193,7 +193,7 @@ price_dict = {
     "Popcorn": 2.5,
     "Water": 2,
     "Pita Chips": 4.5,
-    "M&Ms'": 3,
+    "M&Ms": 3,
     "Orange Juice": 3.25
 }
 
@@ -300,7 +300,7 @@ movie_frame["Snacks"] = \
     movie_frame["Popcorn"]*price_dict["Popcorn"] + \
     movie_frame["Water"]*price_dict["Water"] + \
     movie_frame["Pita Chips"]*price_dict["Pita Chips"] + \
-    movie_frame["M&Ms'"]*price_dict["M&Ms'"] + \
+    movie_frame["M&Ms"]*price_dict["M&Ms"] + \
     movie_frame["Orange Juice"]*price_dict["Orange Juice"]
 
 movie_frame["Sub Total"] = \
