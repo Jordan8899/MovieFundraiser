@@ -15,7 +15,7 @@ def string_input(question):
             print("Error\n")
 
 
-def snack_amount(a):
+def snack_amount(response):
     if response[0].isnumeric():
         return response
     else:
@@ -23,7 +23,7 @@ def snack_amount(a):
 
 
 while snack != "exit":
-    snack = input("What snack do you want? ")
+    snack = input("What snack do you want? ").lower()
     snack_amount(snack)
     amount = snack[0]
     snack.replace(int, "")

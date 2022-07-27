@@ -160,7 +160,8 @@ pay2 = ["cash", "money"]
 cost = 0
 ticket_price = 0
 ticket_count = 0
-MAX_TICKETS = 150
+# Max Tickets is set to 3 so that it's easy to test if the code continues or stops when the amount of tickets has been brought
+MAX_TICKETS = 3
 no_words = ["no", "nah", "negative", "incorrect", "exit"]
 yes_words = ["yes", "yea", "ya", "positive", "sure", "correct"]
 ticket_sales = 0
@@ -209,7 +210,7 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
     check_tickets(ticket_count, MAX_TICKETS)
 
     # Ticket Details
-    print("For ages 12 - 15 tickets will cost $7.50\n"
+    print("\nFor ages 12 - 15 tickets will cost $7.50\n"
           "For ages 16 - 64 tickets will cost $10.50\n"
           "For ages 64+ tickets will cost $6.50\n")
 
@@ -237,7 +238,7 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
 
     # Gives users their ticket price and snack options
     print("\nTicket Price is ${:.2f}\n".format(ticket_price))
-    print("The snacks we have for offer are: \n"
+    print("\nThe snacks we have for offer are: \n"
           "\nPopcorn \n"
           "M&M \n"
           "Pita Chips \n"
@@ -290,6 +291,7 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
         if exit_chance in no_words:
             exit = True
     else:
+        print("Sorry there are 0 seats remaining")
         exit = True
 
 # Pandas Frame
