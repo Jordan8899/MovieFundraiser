@@ -134,6 +134,10 @@ def get_snack():
             snack_list.append(snack_row)
             return snack_list
 
+# Currency Function allows for formatting pandas into 2dp
+def currency(i):
+    return "${:.2f}".format(i)
+
 # **************************************************************
 #                           Main Routine
 # **************************************************************
@@ -347,9 +351,14 @@ summary_frame = summary_frame.set_index("Item")
 # Pandas Display
 pandas.set_option("display.max_columns", None)
 
+# Formatting Pandas with Currency Function
+money_formatting = ["Ticket", "Snacks", "Surcharge", "Total", "Sub Total"]
+for item in money_formatting:
+    movie_frame[item] = movie_frame[item].apply(currency)
+
 # CSV Files
 movie_frame.to_csv("ticket_details.csv")
 summary_frame.to_csv("snack_summary.csv")
 
-print("\n**** Ticket and Snack Information ****\n")
+print("\n***** Ticket and Snack Information *****\n")
 print(movie_frame[["Ticket", "Sub Total", "Surcharge", "Total"]])
