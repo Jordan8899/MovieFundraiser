@@ -164,7 +164,7 @@ pay2 = ["cash", "money"]
 cost = 0
 ticket_price = 0
 ticket_count = 0
-# Max Tickets is set to 3 so that it's easy to test if the code continues or stops when the amount of tickets has been brought
+# Max Tickets how many tickets can be brought change value changes how many may be brought
 MAX_TICKETS = 3
 no_words = ["no", "nah", "negative", "incorrect", "exit"]
 yes_words = ["yes", "yea", "ya", "positive", "sure", "correct"]
@@ -289,8 +289,8 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
 
     surcharge_multi_list.append(surcharge)
 
-    # Allows user to buy more tickets if requested
-    if MAX_TICKETS > 0:
+    # Allows user to buy more tickets if requested and stops program if there aren't enough tickets left
+    if MAX_TICKETS != ticket_count:
         exit_chance = string_input("Would you like to buy another ticket? ").replace(" ", "").lower()
         if exit_chance in no_words:
             exit = True
