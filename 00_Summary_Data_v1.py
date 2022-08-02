@@ -266,13 +266,15 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
         else:
             print("Please input yes or no")
 
-    # Adds Snacks to list for dictionary
-        for item in snack_order:
-            if len(item) > 0:
-                to_find = (item[1])
-                amount = (item[0])
-                add_list = movie_data_dictornary[to_find]
-                add_list[-1] = amount
+
+        if snack_order != "exit":
+        # Adds Snacks to list for dictionary
+            for item in snack_order:
+                if len(item) > 0:
+                    to_find = (item[1])
+                    amount = (item[0])
+                    add_list = movie_data_dictornary[to_find]
+                    add_list[-1] = amount
 
     # Payment method, card or credit
     while True:
