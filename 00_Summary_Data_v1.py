@@ -2,6 +2,7 @@
 import pandas
 import re
 
+
 # Functions
 
 # String checker
@@ -17,6 +18,7 @@ def string_input(question):
                 print("Please input a valid response, this response can only contain letters")
         except ValueError:
             print("Error\n")
+
 
 def snack_input_checker(choice, options):
     for var_list in options:
@@ -73,6 +75,7 @@ def number_input(question):
         except ValueError:
             print("Please only input numbers\n")
 
+
 # Ticket amount checker
 def check_tickets(tickets_sold, tickets_limit):
     # This tells user how many seats are left
@@ -80,6 +83,7 @@ def check_tickets(tickets_sold, tickets_limit):
         print("There is only 1 seat left available")
     else:
         print("There are {} seats left".format(tickets_limit - tickets_sold))
+
 
 # Snack Function to get users snacks
 def get_snack():
@@ -134,9 +138,11 @@ def get_snack():
             snack_list.append(snack_row)
             return snack_list
 
+
 # Currency Function allows for formatting pandas into 2dp
 def currency(i):
     return "${:.2f}".format(i)
+
 
 # **************************************************************
 #                           Main Routine
@@ -172,7 +178,8 @@ ticket_sales = 0
 exit = False
 
 # Summary Data
-summary_headings = ["Popcorn", "M&M's", "Pita Chips", "Water", "Orange Juice", "Snack Profit", "Ticket Profit", "Total Profit"]
+summary_headings = ["Popcorn", "M&M's", "Pita Chips", "Water", "Orange Juice", "Snack Profit", "Ticket Profit",
+                    "Total Profit"]
 
 summary_data = []
 
@@ -266,9 +273,8 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
         else:
             print("Please input yes or no")
 
-
         if snack_order != "exit":
-        # Adds Snacks to list for dictionary
+            # Adds Snacks to list for dictionary
             for item in snack_order:
                 if len(item) > 0:
                     to_find = (item[1])
@@ -305,11 +311,11 @@ movie_frame = pandas.DataFrame(movie_data_dictornary)
 movie_frame = movie_frame.set_index("Name")
 
 movie_frame["Snacks"] = \
-    movie_frame["Popcorn"]*price_dict["Popcorn"] + \
-    movie_frame["Water"]*price_dict["Water"] + \
-    movie_frame["Pita Chips"]*price_dict["Pita Chips"] + \
-    movie_frame["M&Ms"]*price_dict["M&Ms"] + \
-    movie_frame["Orange Juice"]*price_dict["Orange Juice"]
+    movie_frame["Popcorn"] * price_dict["Popcorn"] + \
+    movie_frame["Water"] * price_dict["Water"] + \
+    movie_frame["Pita Chips"] * price_dict["Pita Chips"] + \
+    movie_frame["M&Ms"] * price_dict["M&Ms"] + \
+    movie_frame["Orange Juice"] * price_dict["Orange Juice"]
 
 movie_frame["Sub Total"] = \
     movie_frame["Ticket"] + \
@@ -319,7 +325,7 @@ movie_frame["Surcharge"] = \
     movie_frame["Sub Total"] * movie_frame["Surcharge_Multiplier"]
 
 movie_frame["Total"] = movie_frame["Sub Total"] + \
-    movie_frame["Surcharge"]
+                       movie_frame["Surcharge"]
 
 # Rename columns
 movie_frame = movie_frame.rename(columns={"Orange Juice": "OJ",
