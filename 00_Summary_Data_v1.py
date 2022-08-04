@@ -143,18 +143,18 @@ def get_snack():
 def currency(i):
     return "${:.2f}".format(i)
 
-# Loops yes / no questions fixed snack error
+# Loops yes / no questions fixes yes / no loop errors
 def yes_no(question):
     valid = False
     while not valid:
         response = input(question).lower().strip()
 
-        if response == "yes" or response == "y":
+        if response in yes_words:
             response = "yes"
             return response
 
     # If they say no, output 'display instructions'
-        elif response == "no" or response == "n":
+        elif response in no_words:
             response = "no"
             return response
         else:
@@ -314,9 +314,13 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
 
     # Allows user to buy more tickets if requested and stops program if there aren't enough tickets left
     if MAX_TICKETS != ticket_count:
-        exit_chance = string_input("Would you like to buy another ticket? ").replace(" ", "").lower()
+        exit_chance = yes_no("Would you like to buy another ticket? ").replace(" ", "").lower()
         if exit_chance in no_words:
             exit = True
+
+        if exit_chance in yes_words:
+            exit = False
+
     else:
         print("Sorry there are 0 seats remaining")
         exit = True
