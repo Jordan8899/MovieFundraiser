@@ -143,6 +143,23 @@ def get_snack():
 def currency(i):
     return "${:.2f}".format(i)
 
+# Loops yes / no questions fixed snack error
+def yes_no(question):
+    valid = False
+    while not valid:
+        response = input(question).lower().strip()
+
+        if response == "yes" or response == "y":
+            response = "yes"
+            return response
+
+    # If they say no, output 'display instructions'
+        elif response == "no" or response == "n":
+            response = "no"
+            return response
+        else:
+            print("Please enter either \"Yes\" or \"No\"")
+
 
 # **************************************************************
 #                           Main Routine
@@ -265,13 +282,11 @@ while not exit and ticket_count <= MAX_TICKETS - 1:
 
     # Snack while loop only exits when user inputs exit + snack details / information
     while True:
-        snack_yes_no = string_input("Would you like to buy snacks? ")
+        snack_yes_no = yes_no("Would you like to buy snacks? ")
         if snack_yes_no in yes_words:
             snack_order = get_snack()
         elif snack_yes_no in no_words:
             break
-        else:
-            print("Please input yes or no")
 
         if snack_order != "exit":
             # Adds Snacks to list for dictionary
